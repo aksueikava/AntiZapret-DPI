@@ -4,3 +4,6 @@
 ## Features
 - Configurable DPI bypass settings for both TCP and UDP protocols.
 - Automatic service management for easy deployment and updates.
+
+## Based on
+This project is developed based on the [**Zapret**](https://github.com/bol-van/zapret) repository, which utilizes `WinDivert` for packet interception and manipulation.
