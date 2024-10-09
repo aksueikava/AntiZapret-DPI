@@ -1,6 +1,13 @@
 @echo off
 setlocal
 
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo This script must be run as an administrator.
+    pause
+    exit /b
+)
+
 set SRVCNAME=AntiZapret
 
 echo Stopping service "%SRVCNAME%"...

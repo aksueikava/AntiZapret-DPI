@@ -1,6 +1,14 @@
 @echo off
 setlocal
 
+:: Check for administrator privileges
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo This script must be run as an administrator.
+    pause
+    exit /b
+)
+
 set ARGS=--wf-tcp=443-65535 --wf-udp=443-65535 ^
 --wf-tcp=80,443,50000-65535 --wf-udp=443,50000-65535 ^
 --filter-udp=443 --hostlist=\"%~dp0bin\list-general.txt\" --dpi-desync=fake --dpi-desync-udplen-increment=10 --dpi-desync-repeats=6 --dpi-desync-udplen-pattern=0xDEADBEEF --dpi-desync-fake-quic=\"%~dp0bin\quic_initial_www_google_com.bin\" --new ^
